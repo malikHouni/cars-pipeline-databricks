@@ -1,26 +1,30 @@
-# cars-pipeline-databricks
-Reconstruction d’un pipeline de reporting métier dans Databricks – basé sur mon expérience HSolutions
+#  Car Data Pipeline – Spark + Delta Lake (Databricks Community Edition)
 
+Projet complet de pipeline Big Data inspiré d'une expérience professionnelle.
 
- 1. Ingestion des données
-Webscraping ou lecture d’un fichier CSV public (simulé comme une source brute)
+##  Architecture Medallion
 
-Ingestion dans un DataFrame Spark
+- **Bronze** : ingestion brute de fichiers JSON (multi-fichiers)
+- **Silver** : nettoyage, typage, enrichissement
+- **Gold** : KPI agrégés et création de vues analytiques
 
-2. Nettoyage / transformation
-Traitement des valeurs nulles / types / doublons
+##  Stack technique
 
-Normalisation de colonnes
+- Apache Spark
+- Delta Lake
+- Databricks (Community Edition)
+- GitHub Actions (CI notebook)
+- dbutils.notebook.run() (simulation d’orchestration)
 
-3. Stockage
-Sauvegarde en Delta Lake (format .delta) ou Parquet
+##  Étapes
 
-Utilisation du “bronze → silver” pattern
+1. Ingestion multi-JSON (notebooks/01_bronze_ingestion.ipynb)
+2. Transformation Silver (notebooks/02_silver_transformation.ipynb)
+3. Agrégation & vue SQL (notebooks/03_gold_analysis.ipynb)
 
-4. Visualisation
-Création de KPIs simples avec display() ou avec SQL dans Databricks
+##  Pour aller plus loin
 
-Graphique via notebook intégré
+- Orchestration complète dans un environnement pro (Airflow, Databricks Jobs)
+- Monitoring / Logging Spark
+- Stockage sur S3 + gestion de partition
 
-5. Bonus : Orchestration
-Ajout d’un dbutils.notebook.run() pour simuler une pipeline orchestrée
