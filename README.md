@@ -1,6 +1,7 @@
 # cars-pipeline-databricks
 Reconstruction d’un pipeline de reporting métier dans Databricks – basé sur mon expérience HSolutions
 
+
  1. Ingestion des données
 Webscraping ou lecture d’un fichier CSV public (simulé comme une source brute)
 
